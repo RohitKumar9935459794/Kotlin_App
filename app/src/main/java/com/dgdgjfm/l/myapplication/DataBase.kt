@@ -18,13 +18,16 @@ abstract class DataBase: RoomDatabase() {
 
         // here i am creating a invoke function
         operator  fun  invoke(context: Context)= instance?: synchronized(LOCK){
-          //  instance?: CreateDatabase(context).also{
+            instance?: CreateDatabase(context).also{ it ->
               //  instance=it
-           // }
+            }
+        }
+
+        private fun CreateDatabase(context: Context)= {
+            Room.databaseBuilder(context.applicationContext,DataBase::class.java,"Grocery_db").build()
+
         }
     }
-
-    private  fun CreateDatabase(context: Context)=
-        Room.databaseBuilder(context.applicationContext,DataBase::class.java,"Grocery_db").build()
-
 }
+
+
