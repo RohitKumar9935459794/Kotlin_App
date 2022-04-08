@@ -18,8 +18,8 @@ abstract class DataBase: RoomDatabase() {
 
         // here i am creating a invoke function
         operator  fun  invoke(context: Context)= instance?: synchronized(LOCK){
-            instance?: CreateDatabase(context).also{ it ->
-              //  instance=it
+            instance?: CreateDatabase(context).also{
+              // instancce it
             }
         }
 
